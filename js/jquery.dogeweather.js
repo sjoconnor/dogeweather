@@ -3,7 +3,8 @@
     //  such plugin
     $.doge = function(tings) {
         //  very jquery
-        var doge = $('body').css('font-family', 'Comic Sans MS, Comic Sans, Chalkboard, Helvetica, Arial, sans-serif');
+        var doge = $('body').css('font-family', 
+            "'Comic Sans', 'Comic Sans MS', 'Chalkboard', 'ChalkboardSE-Regular', 'Marker Felt', 'Purisa', 'URW Chancery L', cursive");
 
         var suchcolors = [ 
             "#0066FF", "#FF3399", "#33CC33", "#FFFF99", "#FFFF75", "#8533FF", 
