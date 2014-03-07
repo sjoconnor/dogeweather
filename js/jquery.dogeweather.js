@@ -199,23 +199,47 @@
             bottom: 0,
             pointerEvents: 'none'
         });
-     
-        interval = setInterval(function() {
-            
-            $('.such.overlay').append(
-                '<span style="position: absolute; left: ' + Math.random()  *100 + '%;top: ' + Math.random()  *100 + '%;font-size: ' + Math.max(20, (Math.random() * 50 + 24)) + 'px; color:' + randomFrom(suchcolors) + ';">'
-                    + r(dogefix) +
-                '</span>');
-                var suchnumber = $("span").length;
-                if (suchnumber > 8 )
-                {
-                    $('.such span:nth-child(1)').remove();
-                }
-        }, 2300);
+
+        function veryspeak() {
+          $('.such.overlay').append(
+            '<span style="position: absolute; left: ' + Math.random()  *100 + '%;top: ' + Math.random()  *100 + '%;font-size: ' + Math.max(20, (Math.random() * 50 + 24)) + 'px; color:' + randomFrom(suchcolors) + ';">'
+            + r(dogefix) +
+              '</span>');
+            var suchnumber = $("span").length;
+            if (suchnumber > 8 )
+            {
+              $('.such span:nth-child(1)').remove();
+            }
+        }
+
+        interval = setInterval(veryspeak, 2300);
+
+        function shake_gooddoge($el){
+          function rand(range) { return Math.round((Math.random() - 0.5 ) * range); }
+		  $el.css({
+            'transition': 'transform 5ms',
+            'transform': 'translate(' + rand(20) + 'px, ' + rand(20) + 'px)'
+          });
+          var center = $el.width()/2;
+        }
+        var manykonami = new Konami(function(){
+          dogefix = [
+              'so bite', 'not fun',
+              'many anger', 'very konami',
+              'such egg', '10/10 sekret',
+              'wow'
+          ];
+          var $el = $('.doge-image').css('background-image', 'url(./img/doge/dogerage.png)');
+          clearInterval(interval);
+          shakeInterval = setInterval(function(){ shake_gooddoge($el); }, 10);
+          interval = setInterval(veryspeak, 75);
+        });
+
 
         $("#browser_geo" ).one('click', function(){
             console.log('clear');
             clearInterval(interval);
+            clearInterval(shakeInterval);
         });
     };
 })(jQuery);
