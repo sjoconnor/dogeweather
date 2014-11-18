@@ -1,4 +1,7 @@
-	   getWeather("./weather.php");
+ 	   	$(document).ready(function() {
+	   	  getWeather("./weather.php");
+	      getLocation(); 
+	   });
 
 	   function getWeather(link) {
 	   		$.getJSON(link, function(data){
@@ -43,30 +46,25 @@
 		});
 	   }
 
-	   	$("#browser_geo" ).one('click', function(){
-	   		getLocation();
-
-  			 function getLocation()
-			  {
-			  if (navigator.geolocation)
-			    {
+	   $("#browser_geo" ).one('click', function(){
+	   	getLocation();
+	   });
+	   
+	    function getLocation() {
+	        if (navigator.geolocation) {
 			    navigator.geolocation.getCurrentPosition(showPosition);
-			    }
-			  else
-			  	$("#browser_geo").text("Geolocation is not supported by this browser.");
-			  }
-			function showPosition(position)
-			  {
-			  //$("#browser_geo").text("Latitude: " + position.coords.latitude + 
-			  //"Longitude: " + position.coords.longitude);
+			}
+		    else {
+			    $("#browser_geo").text("Geolocation is not supported by this browser.");
+			}
+	    }
+		function showPosition(position) {
+		    var url = 'http://api.openweathermap.org/data/2.5/weather';
+            url += '?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&callback=?';
 
-			  	var url = 'http://api.openweathermap.org/data/2.5/weather';
-                url += '?lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&callback=?';
-
-                getWeather(url);
-                $("#browser_geo").text("wow, located!").css("cursor", "auto").css("color", "#FF5CFF");
-			  }
-			});
+            getWeather(url);
+            $("#browser_geo").text("wow, located!").css("cursor", "auto").css("color", "#FF5CFF");
+		}
 
 
 
