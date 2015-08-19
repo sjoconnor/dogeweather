@@ -146,12 +146,5 @@
           shakeInterval = setInterval(function(){ shake_gooddoge($el); }, 10);
           interval = setInterval(veryspeak, 75);
         });
-
-
-        $("#browser_geo" ).one('click', function(){
-            console.log('clear');
-            clearInterval(interval);
-            clearInterval(shakeInterval);
-        });
     };
 })(jQuery);
