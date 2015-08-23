@@ -40,7 +40,6 @@ function getWeather(link) {
 }
 
 $("#browser_geo" ).one('click', function(){
-	console.log("yo!");
    	getLocation();
 });
 	   

@@ -17,9 +17,6 @@
         return arr[randomIndex];
         }
         
-        //  much array
-        //var tings = (['doge', 'shibe', 'excite', 'impress', 'skill', 'warn']);
-        
         var r = function(arr) {
             if(!arr) arr = tings; return arr[Math.floor(Math.random() * arr.length)];
         };
@@ -31,9 +28,7 @@
         var suchdescription = $("#weather-desc").text();
         var temp = $("#degreesCelsius .number").text();
         var suchtemp = parseInt(temp);
-
-        console.log(suchicon);
-        console.log(suchtemp + "temp");
+        console.log(suchtemp);
 
         if (suchtemp <= -30) {
             var suchwords = ["winter", "freeze", "polar vortex", "ridiculous", "hibernate", "climate change", "doom"];
@@ -55,7 +50,6 @@
             var suchwords = ["concern", "climate", "degrees", "shrug", "wow", "celcius", "farenheit"];
         }
 
-        console.log(suchtemp);
 
         //Clouds
         if(suchicon=="01d") {
@@ -112,11 +106,26 @@
             pointerEvents: 'none'
         });
 
+        function veryspeak() {
+          $('.such.overlay').append(
+            '<span style="position: absolute; left: ' + Math.random()  *100 + '%;top: ' + Math.random()  *100 + '%;font-size: ' + Math.max(20, (Math.random() * 50 + 24)) + 'px; color:' + randomFrom(suchcolors) + ';">'
+            + r(dogefix) +
+              '</span>');
+            var suchnumber = $("span").length;
+            if (suchnumber > 8 )
+            {
+              $('.such span:nth-child(1)').remove();
+            }
+        }
+
+        interval = setInterval(veryspeak, 2300);
+
         var manykonami = new Konami(function() {
             $("#weather-desc").text('no');
             $('#location').text('just no');
-          
-          var $el = $('.doge-image').css('background-image', 'url(./img/doge/grumpycat.png)');
+                
+            $('.such.overlay').hide();
+            $('.doge-image').css('background-image', 'url(./img/doge/grumpycat.png)');
 
         });
     };
